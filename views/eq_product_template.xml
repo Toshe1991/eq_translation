@@ -28,9 +28,27 @@
             <field name="inherit_id" ref="product.product_template_tree_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="after">
-                    <field name="en_name" invisible="context.get('translated', True)"/>
+                    <field name="en_name" invisible="not context.get('translated', False)"/>
                     <field name="description_sale"/>
-                    <field name="en_description_sale" invisible="context.get('translated', True)"/>
+                    <field name="en_description_sale" invisible="not context.get('translated', False)"/>
+                </xpath>
+                <xpath expr="//field[@name='standard_price']" position="attributes">
+                    <attribute name="invisible">context.get('translated', False)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='categ_id']" position="attributes">
+                    <attribute name="invisible">context.get('translated', False)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='type']" position="attributes">
+                    <attribute name="invisible">context.get('translated', False)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='uom_id']" position="attributes">
+                    <attribute name="invisible">context.get('translated', False)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='qty_available']" position="attributes">
+                    <attribute name="invisible">context.get('translated', False)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='virtual_available']" position="attributes">
+                    <attribute name="invisible">context.get('translated', False)</attribute>
                 </xpath>
             </field>
         </record>

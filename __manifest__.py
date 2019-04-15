@@ -8,7 +8,7 @@
     'version': '1.0.1',
     'author': 'Equitania Software GmbH',
     'website': 'www.myodoo.de',
-    'depends': ['base_setup', 'product'],
+    'depends': ['base_setup', 'product', 'stock'],
     'category' : 'General Improvements',
     'summary': 'Module for translating product name and description from German to English',
 

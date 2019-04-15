@@ -71,7 +71,7 @@ class EqProductTemplate(models.Model):
             'type': 'ir.actions.act_window',
             'target': 'current',
             'auto_refresh': 1,
-            'context': {'translated': False}
+            'context': {'translated': True}
         }
 
 class EqProductTranslation(models.Model):
