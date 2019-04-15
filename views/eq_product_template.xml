@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_translate_product" model="ir.actions.server">
+            <field name="name">Translate from German to English</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_product_template" />
+            <field name="state">code</field>
+            <field name="code">
+                action = records.translate_to_english()
+            </field>
+        </record>
+
+        <record model="ir.values" id="action_translate_products">
+            <field name="name">action_translate_products</field>
+            <field name="action_id" ref="action_translate_product" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_translate_product'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_product_template" />
+            <field name="model">product.template</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+
+        <record id="view_translations_product_template" model="ir.ui.view">
+            <field name="name">product.template.translation.tree</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="en_name" invisible="context.get('translated', True)"/>
+                    <field name="description_sale"/>
+                    <field name="en_description_sale" invisible="context.get('translated', True)"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
